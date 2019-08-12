@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Second View Controller-->
+        <scene sceneID="Er3-Bp-ZJv">
+            <objects>
+                <viewController storyboardIdentifier="SecondViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c5Y-Nv-n54" customClass="SecondViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PQb-6I-gUS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIT-L3-aWg">
+                                <rect key="frame" x="20" y="133.5" width="335" height="66.5"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fo3-cB-rTX">
+                                <rect key="frame" x="20" y="300" width="335" height="67"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="戻る"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="backBtnTap:" destination="c5Y-Nv-n54" eventType="touchUpInside" id="gvD-GJ-hyR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                        <constraints>
+                            <constraint firstItem="Fo3-cB-rTX" firstAttribute="centerY" secondItem="PQb-6I-gUS" secondAttribute="centerY" id="3An-fE-PfK"/>
+                            <constraint firstItem="BIT-L3-aWg" firstAttribute="height" secondItem="PQb-6I-gUS" secondAttribute="height" multiplier="0.1" id="5wx-aU-xnE"/>
+                            <constraint firstItem="Inn-Zc-XOP" firstAttribute="trailing" secondItem="BIT-L3-aWg" secondAttribute="trailing" constant="20" id="6Gc-fa-fG2"/>
+                            <constraint firstItem="BIT-L3-aWg" firstAttribute="centerX" secondItem="PQb-6I-gUS" secondAttribute="centerX" id="Azl-ud-F45"/>
+                            <constraint firstItem="Inn-Zc-XOP" firstAttribute="trailing" secondItem="Fo3-cB-rTX" secondAttribute="trailing" constant="20" id="IWm-Ar-AEm"/>
+                            <constraint firstItem="Fo3-cB-rTX" firstAttribute="centerX" secondItem="PQb-6I-gUS" secondAttribute="centerX" id="KFH-iV-Bfy"/>
+                            <constraint firstItem="BIT-L3-aWg" firstAttribute="centerY" secondItem="PQb-6I-gUS" secondAttribute="centerY" multiplier="0.5" id="RRG-2P-qTj"/>
+                            <constraint firstItem="BIT-L3-aWg" firstAttribute="leading" secondItem="Inn-Zc-XOP" secondAttribute="leading" constant="20" id="act-FH-J2x"/>
+                            <constraint firstItem="Fo3-cB-rTX" firstAttribute="leading" secondItem="Inn-Zc-XOP" secondAttribute="leading" constant="20" id="mEx-kB-a5v"/>
+                            <constraint firstItem="Fo3-cB-rTX" firstAttribute="height" secondItem="PQb-6I-gUS" secondAttribute="height" multiplier="0.1" id="xSD-qp-MyD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Inn-Zc-XOP"/>
+                    </view>
+                    <connections>
+                        <outlet property="resultLabel" destination="BIT-L3-aWg" id="I4K-pY-UJL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2PJ-1o-ud7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

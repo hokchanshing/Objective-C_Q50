@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SGL-eI-ZYd">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Second View Controller-->
+        <scene sceneID="9Pc-dq-lkB">
+            <objects>
+                <viewController storyboardIdentifier="SecondViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SGL-eI-ZYd" customClass="SecondViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JK6-MB-X8G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08h-6x-khs">
+                                <rect key="frame" x="150" y="315.5" width="75" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <size key="titleShadowOffset" width="1" height="2"/>
+                                <state key="normal" title="画面Aへ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissButton:" destination="SGL-eI-ZYd" eventType="touchUpInside" id="baD-pq-oTK"/>
+                                    <action selector="dismissButton:" destination="eR7-2U-faQ" eventType="touchUpInside" id="vdQ-3i-zUV"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="画面Bです" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0e-LG-vIf">
+                                <rect key="frame" x="128.5" y="151" width="118" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="1" height="2"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="08h-6x-khs" firstAttribute="centerX" secondItem="JK6-MB-X8G" secondAttribute="centerX" id="1q8-Mx-QmI"/>
+                            <constraint firstItem="t0e-LG-vIf" firstAttribute="centerX" secondItem="JK6-MB-X8G" secondAttribute="centerX" id="8Er-PE-HfQ"/>
+                            <constraint firstItem="08h-6x-khs" firstAttribute="centerY" secondItem="JK6-MB-X8G" secondAttribute="centerY" id="NFS-Rt-71F"/>
+                            <constraint firstItem="t0e-LG-vIf" firstAttribute="centerY" secondItem="JK6-MB-X8G" secondAttribute="centerY" multiplier="0.5" id="n6n-UW-qiQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nBt-lv-RlZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sya-Dy-nSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eR7-2U-faQ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-1" y="-7"/>
+        </scene>
+    </scenes>
+</document>

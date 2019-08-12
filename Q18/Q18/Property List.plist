@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>sectionName</key>
+        <array>
+            <string>食べ物</string>
+            <string>スープ</string>
+            <string>ドリンク</string>
+        </array>
+        <key>foodImageName</key>
+        <array>
+            <string>potatoFood</string>
+            <string>tantanmenFood</string>
+        </array>
+        <key>soupImageName</key>
+        <array>
+            <string>misoSoup</string>
+            <string>konsomeSoup</string>
+        </array>
+        <key>drinkImageName</key>
+        <array>
+            <string>highballDrink</string>
+            <string>tapiocaDrink</string>
+        </array>
+    </dict>
+</plist>
