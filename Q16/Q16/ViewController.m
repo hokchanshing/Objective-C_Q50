@@ -2,59 +2,106 @@
 //  ViewController.m
 //  Q16
 //
-//  Created by 陳学誠 on 2019/08/07.
-//  Copyright © 2019 sample. All rights reserved.
+//  Created by hschan on 2019/08/11.
+//  Copyright © 2019 hschan. All rights reserved.
 //
 
 #import "ViewController.h"
 
-@interface ViewController ()
-    
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *characterImageNameList;
-@property (strong, nonatomic) NSArray *characterInfoList;
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
-- (void)setTableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *sectionNameList;
+@property (strong, nonatomic) NSArray *cellImageList;
+@property (strong, nonatomic) NSArray *cellInfoList;
+@property (strong, nonatomic) NSDictionary *plistDictionary;
+
+- (void)setupTableView;
 - (void)getPlistData;
-    
+
 @end
 
-static CGFloat const cellRowEstimateHeigt = 100;
+
+typedef NS_ENUM(NSUInteger, mealCategory) {
+    foodCategory,
+    soupCategory,
+    drinkCategory
+};
+
+// セクションの高さ
+static CGFloat const CellHeight = 30;
+// セルの高さ
+static CGFloat const cellRowEstimateHeight = 200;
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupTableView];
     [self getPlistData];
-    [self setTableView];
 }
-    
-- (void)setTableView {
+
+//tableViewをセット
+- (void)setupTableView{
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = cellRowEstimateHeigt;
+    self.tableView.estimatedRowHeight = cellRowEstimateHeight;
 }
-    
-- (void)getPlistData {
-    
+
+//plistからデータを取得
+- (void)getPlistData{
     NSBundle *bundle = NSBundle.mainBundle;
-    NSString *path = [bundle pathForResource:@"character" ofType:@"plist"];
-    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:path];
-    
-    self.characterImageNameList = dic[@"characterImageName"];
-    self.characterInfoList = dic[@"characterInfo"];
+    NSString *path = [bundle pathForResource:@"Property List" ofType:@"plist"];
+    self.plistDictionary = [NSDictionary dictionaryWithContentsOfFile:path];
+    self.sectionNameList = self.plistDictionary[@"sectionName"];
+    self.cellImageList = self.plistDictionary[@"foodImageName"];
+    self.cellInfoList = self.plistDictionary[@"foodInfo"];
 }
-    
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return self.sectionNameList.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return self.sectionNameList[section];
+}
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return CellHeight;
+//}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return CellHeight;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return MAX(self.characterImageNameList.count, self.characterInfoList.count);
+    return MAX(self.cellImageList.count, self.cellInfoList.count);
 }
-    
+
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    // インスタンス化
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = self.characterInfoList[indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:self.characterImageNameList[indexPath.row]];
-    
+    // 違うセッションにし違う配列を設置
+    switch (indexPath.section) {
+        case foodCategory:
+            self.cellImageList = self.plistDictionary[@"foodImageName"];
+            self.cellInfoList = self.plistDictionary[@"foodInfo"];
+            break;
+        case soupCategory:
+            self.cellImageList = self.plistDictionary[@"soupImageName"];
+            self.cellInfoList = self.plistDictionary[@"soupInfo"];
+            break;
+        case drinkCategory:
+            self.cellImageList = self.plistDictionary[@"drinkImageName"];
+            self.cellInfoList = self.plistDictionary[@"drinkInfo"];
+            break;
+        default:
+            break;
+    }
+    cell.textLabel.text = self.cellInfoList[indexPath.row];
+    cell.imageView.image = [UIImage imageNamed: self.cellImageList[indexPath.row]];
     return cell;
 }
 

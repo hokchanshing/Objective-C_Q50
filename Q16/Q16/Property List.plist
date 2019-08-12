@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>foodImageName</key>
+	<array>
+		<string>potatoFood</string>
+		<string>tantanmenFood</string>
+	</array>
+	<key>foodInfo</key>
+	<array>
+		<string>フライドポテト
+ジャガイモを食べやすい大きさに切って、油で揚げた料理である。</string>
+		<string>担々麺
+辛みを利かせた挽肉やザーサイの細切りなどをのせた麺料理である。</string>
+	</array>
+	<key>soupImageName</key>
+	<array>
+		<string>konsomeSoup</string>
+		<string>misoSoup</string>
+	</array>
+	<key>soupInfo</key>
+	<array>
+		<string>コンソメスープ
+フランス料理におけるスープのひとつで、澄んだスープの一種。</string>
+		<string>味噌汁
+日本料理における汁物の一つで、だしを味噌で調味した汁に、野菜や豆腐、麸や魚介類などの食品を実としたスープ様の料理である。</string>
+	</array>
+	<key>drinkImageName</key>
+	<array>
+		<string>highballDrink</string>
+		<string>tapiocaDrink</string>
+	</array>
+	<key>drinkInfo</key>
+	<array>
+		<string>ハイボール
+日本では焼酎やウオッカなどをベースとしたカクテルを焼酎ハイボールと呼んでいる。</string>
+		<string>タピオカミルクティー
+ミルクティーに大粒のタピオカパールを入れた台湾発祥の飲料。</string>
+	</array>
+	<key>sectionName</key>
+	<array>
+		<string>食べ物</string>
+		<string>スープ</string>
+		<string>ドリンク</string>
+	</array>
+</dict>
+</plist>
