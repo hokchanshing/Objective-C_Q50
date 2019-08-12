@@ -1,0 +1,7 @@
+/* 
+  Localizable.strings
+  Q06
+
+  Created by 陳学誠 on 2019/08/02.
+  Copyright © 2019 sample. All rights reserved.
+*/

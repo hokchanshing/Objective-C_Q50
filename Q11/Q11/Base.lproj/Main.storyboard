@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WiE-Cs-Ie8">
+                                <rect key="frame" x="0.0" y="20" width="320" height="519.5"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lnC-Ta-i8S">
+                                <rect key="frame" x="0.0" y="539.5" width="320" height="28.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLU-1w-Z0g">
+                                        <rect key="frame" x="15" y="-0.5" width="54" height="30"/>
+                                        <state key="normal" title="GoBack"/>
+                                        <connections>
+                                            <action selector="goBackTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AuY-v5-kx0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgR-k4-Uux">
+                                        <rect key="frame" x="258" y="-0.5" width="47" height="30"/>
+                                        <state key="normal" title="Reload"/>
+                                        <connections>
+                                            <action selector="reloadTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AbB-zP-DJc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAv-r9-Efi">
+                                        <rect key="frame" x="122" y="0.0" width="76" height="30"/>
+                                        <state key="normal" title="GoForward"/>
+                                        <connections>
+                                            <action selector="goForwardTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aYn-us-Jdp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="GAv-r9-Efi" firstAttribute="centerY" secondItem="lnC-Ta-i8S" secondAttribute="centerY" constant="0.75" id="02M-7e-EQV"/>
+                                    <constraint firstAttribute="trailing" secondItem="xgR-k4-Uux" secondAttribute="trailing" constant="15" id="2gC-0o-brQ"/>
+                                    <constraint firstItem="OLU-1w-Z0g" firstAttribute="leading" secondItem="lnC-Ta-i8S" secondAttribute="leading" constant="15" id="72f-ne-ayw"/>
+                                    <constraint firstItem="xgR-k4-Uux" firstAttribute="centerY" secondItem="lnC-Ta-i8S" secondAttribute="centerY" id="Uic-T0-pdz"/>
+                                    <constraint firstItem="OLU-1w-Z0g" firstAttribute="centerY" secondItem="lnC-Ta-i8S" secondAttribute="centerY" id="ggc-B9-UqX"/>
+                                    <constraint firstItem="GAv-r9-Efi" firstAttribute="centerX" secondItem="Wl8-vV-yNE" secondAttribute="centerX" id="jcr-qa-5VD"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="Wl8-vV-yNE"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="lnC-Ta-i8S" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0MW-HE-Fea"/>
+                            <constraint firstItem="lnC-Ta-i8S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9jH-NT-Pys"/>
+                            <constraint firstItem="lnC-Ta-i8S" firstAttribute="top" secondItem="WiE-Cs-Ie8" secondAttribute="bottom" id="KOh-HL-bwB"/>
+                            <constraint firstItem="lnC-Ta-i8S" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.05" id="N9O-QK-mfu"/>
+                            <constraint firstItem="WiE-Cs-Ie8" firstAttribute="trailing" secondItem="lnC-Ta-i8S" secondAttribute="trailing" id="ZU7-J3-eM3"/>
+                            <constraint firstItem="lnC-Ta-i8S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cUz-KF-Ssn"/>
+                            <constraint firstItem="lnC-Ta-i8S" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="gUS-9G-Xey"/>
+                            <constraint firstItem="WiE-Cs-Ie8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hQ5-D8-Yys"/>
+                            <constraint firstItem="WiE-Cs-Ie8" firstAttribute="leading" secondItem="lnC-Ta-i8S" secondAttribute="leading" id="yCq-Hq-kts"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="GoBackButton" destination="OLU-1w-Z0g" id="Vza-Dr-VgO"/>
+                        <outlet property="goBackButton" destination="OLU-1w-Z0g" id="8EC-6Q-aCM"/>
+                        <outlet property="goForwardButton" destination="GAv-r9-Efi" id="ngi-TK-775"/>
+                        <outlet property="reloadButton" destination="xgR-k4-Uux" id="dRw-EU-hxf"/>
+                        <outlet property="tabView" destination="lnC-Ta-i8S" id="Yqk-jJ-8Zf"/>
+                        <outlet property="webView" destination="WiE-Cs-Ie8" id="hdk-bE-htE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+</document>

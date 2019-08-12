@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>characterInfo</key>
+	<array>
+		<string>カレーの人
+スパイシーなカレーでみんなの舌を魅了する。</string>
+		<string>ドライバー
+雨でも台風でも、荷物を確実に届けてくれる人。</string>
+		<string>探偵 どんな些細なことでも、見逃しなくつかめてくる。</string>
+		<string>プログラマー プログラミングの達人、作れないものはない。</string>
+		<string>歌手 紅白対抗歌合戦の常連、日本一のシンガー。</string>
+	</array>
+	<key>characterImageName</key>
+	<array>
+		<string>curry.png</string>
+		<string>driver.png</string>
+		<string>detective.png</string>
+		<string>programmer.png</string>
+		<string>singer.png</string>
+	</array>
+</dict>
+</plist>

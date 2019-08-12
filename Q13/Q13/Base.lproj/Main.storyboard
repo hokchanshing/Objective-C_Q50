@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcz-Ev-ndE">
+                                <rect key="frame" x="0.0" y="451" width="375" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="jLm-Yy-lSu"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="jKO-t7-x6Y"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="降車駅を選んでください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZ7-ma-2bI">
+                                <rect key="frame" x="50" y="119.5" width="275" height="27.5"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ApO-Pk-Koy" appends="YES" id="Pcs-St-nSP"/>
+                                </connections>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csD-FV-zkj">
+                                <rect key="frame" x="16" y="421" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="closePckerAndDoneButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MEy-oP-CvZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="NZ7-ma-2bI" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.4" id="95O-cr-vmT"/>
+                            <constraint firstItem="bcz-Ev-ndE" firstAttribute="trailing" secondItem="UL4-XQ-cld" secondAttribute="trailing" id="Ada-g2-UdQ"/>
+                            <constraint firstItem="UL4-XQ-cld" firstAttribute="trailing" secondItem="csD-FV-zkj" secondAttribute="trailing" constant="16" id="JjH-9F-wo2"/>
+                            <constraint firstItem="UL4-XQ-cld" firstAttribute="trailing" secondItem="NZ7-ma-2bI" secondAttribute="trailing" constant="50" id="Sag-Bt-gkS"/>
+                            <constraint firstItem="bcz-Ev-ndE" firstAttribute="top" secondItem="csD-FV-zkj" secondAttribute="bottom" id="VUT-B6-wdH"/>
+                            <constraint firstItem="NZ7-ma-2bI" firstAttribute="centerX" secondItem="UL4-XQ-cld" secondAttribute="centerX" id="YqW-X0-pAE"/>
+                            <constraint firstItem="bcz-Ev-ndE" firstAttribute="leading" secondItem="UL4-XQ-cld" secondAttribute="leading" id="aEP-Ri-9n5"/>
+                            <constraint firstItem="UL4-XQ-cld" firstAttribute="bottom" secondItem="bcz-Ev-ndE" secondAttribute="bottom" id="cl0-OA-1n1"/>
+                            <constraint firstItem="csD-FV-zkj" firstAttribute="leading" secondItem="UL4-XQ-cld" secondAttribute="leading" constant="16" id="oVh-yV-xUa"/>
+                            <constraint firstItem="NZ7-ma-2bI" firstAttribute="leading" secondItem="UL4-XQ-cld" secondAttribute="leading" constant="50" id="tML-na-Wpj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UL4-XQ-cld"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="PTI-rV-fbY" appends="YES" id="iJb-Ef-JWi"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="pickerHiddenButton" destination="csD-FV-zkj" id="DV1-H5-Ry4"/>
+                        <outlet property="pickerView" destination="bcz-Ev-ndE" id="Rpg-QT-vjF"/>
+                        <outlet property="resultLabel" destination="NZ7-ma-2bI" id="ech-UJ-N3H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ApO-Pk-Koy">
+                    <connections>
+                        <action selector="labelTouch:" destination="BYZ-38-t0r" id="rkJ-iQ-kbI"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="PTI-rV-fbY">
+                    <connections>
+                        <action selector="closePckerAndDoneButton:" destination="BYZ-38-t0r" id="INn-0u-Eu9"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
+        </scene>
+    </scenes>
+</document>
