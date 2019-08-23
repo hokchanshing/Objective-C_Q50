@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--登録画面-->
+        <scene sceneID="suK-BI-mhm">
+            <objects>
+                <viewController storyboardIdentifier="tourokuViewController" id="yZN-8e-yIH" userLabel="登録画面" customClass="tourokuViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a8W-p8-EAM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="タイトル" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G9s-yg-i3I">
+                                <rect key="frame" x="32" y="82" width="256" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="期限日（YYYYDDMM）" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sat-dc-9pY">
+                                <rect key="frame" x="32" y="130" width="256" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6CT-RF-f8U">
+                                <rect key="frame" x="32" y="178" width="256" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l5q-Gh-9RS">
+                                <rect key="frame" x="57.5" y="316" width="205" height="36.5"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="l5q-Gh-9RS" secondAttribute="height" multiplier="265:47" id="BSb-bs-XCK"/>
+                                </constraints>
+                                <state key="normal" title="登録">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="19"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tourokuBtnTap:" destination="yZN-8e-yIH" eventType="touchUpInside" id="Z73-E6-iC4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="l5q-Gh-9RS" firstAttribute="centerX" secondItem="a8W-p8-EAM" secondAttribute="centerX" id="0QF-KX-48h"/>
+                            <constraint firstItem="6CT-RF-f8U" firstAttribute="top" secondItem="Sat-dc-9pY" secondAttribute="bottom" constant="18" id="1ag-ey-esC"/>
+                            <constraint firstItem="Sat-dc-9pY" firstAttribute="width" secondItem="G9s-yg-i3I" secondAttribute="width" id="4Te-0u-MGS"/>
+                            <constraint firstItem="G9s-yg-i3I" firstAttribute="top" secondItem="ie4-Ct-VLN" secondAttribute="top" constant="18" id="6gs-AX-Ckn"/>
+                            <constraint firstItem="l5q-Gh-9RS" firstAttribute="width" secondItem="6CT-RF-f8U" secondAttribute="width" multiplier="0.8" id="E0m-eo-2BJ"/>
+                            <constraint firstItem="6CT-RF-f8U" firstAttribute="width" secondItem="Sat-dc-9pY" secondAttribute="width" id="FUe-H5-4JP"/>
+                            <constraint firstItem="l5q-Gh-9RS" firstAttribute="top" secondItem="6CT-RF-f8U" secondAttribute="bottom" constant="18" id="KK0-DR-999"/>
+                            <constraint firstItem="6CT-RF-f8U" firstAttribute="height" secondItem="Sat-dc-9pY" secondAttribute="height" multiplier="4" id="Vyd-b2-Zq7"/>
+                            <constraint firstItem="G9s-yg-i3I" firstAttribute="centerX" secondItem="a8W-p8-EAM" secondAttribute="centerX" id="YIG-5T-5B0"/>
+                            <constraint firstItem="G9s-yg-i3I" firstAttribute="width" secondItem="a8W-p8-EAM" secondAttribute="width" multiplier="0.8" id="a3C-Qc-Bn1"/>
+                            <constraint firstItem="6CT-RF-f8U" firstAttribute="centerX" secondItem="a8W-p8-EAM" secondAttribute="centerX" id="hRy-u0-oOm"/>
+                            <constraint firstItem="Sat-dc-9pY" firstAttribute="centerX" secondItem="a8W-p8-EAM" secondAttribute="centerX" id="paa-QI-u0a"/>
+                            <constraint firstItem="Sat-dc-9pY" firstAttribute="top" secondItem="G9s-yg-i3I" secondAttribute="bottom" constant="18" id="xeH-EK-sAi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ie4-Ct-VLN"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="LPq-P3-mJC" appends="YES" id="OWi-UB-Cfk"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="ToDo登録" id="nN4-Ei-aM6">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="cancelBtn" id="FuP-sN-9sJ">
+                            <connections>
+                                <action selector="dismissTorokuBtn:" destination="yZN-8e-yIH" id="SSw-aZ-ccL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contentTextView" destination="6CT-RF-f8U" id="w9j-SL-Wgq"/>
+                        <outlet property="tourokuLimitDateTextField" destination="Sat-dc-9pY" id="JpY-B9-Wud"/>
+                        <outlet property="tourokuTitleTextField" destination="G9s-yg-i3I" id="PkS-5i-yyA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Emz-oW-vI4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="LPq-P3-mJC">
+                    <connections>
+                        <action selector="backgroundTap:" destination="yZN-8e-yIH" id="Ldy-Fp-h9d"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1021.7391304347827" y="330.97826086956525"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nHB-mq-8VR">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationTourokuController" automaticallyAdjustsScrollViewInsets="NO" id="6uI-fw-LFp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="t9W-Dt-r8x">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yZN-8e-yIH" kind="relationship" relationship="rootViewController" id="MSb-mc-j4F"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3K9-rd-IyS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="292" y="330.58470764617692"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cancelBtn" width="48" height="48"/>
+    </resources>
+</document>
