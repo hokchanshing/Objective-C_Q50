@@ -8,10 +8,20 @@
 
 #import "ViewController.h"
 #import <FMDB/FMDatabase.h>
+#import "tourokuViewController.h"
+#import "CustomCellTableViewCell.h"
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDelegate,UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic) int cellCount;
+@property (strong, nonatomic) NSMutableArray *titleList;
+@property (strong, nonatomic) NSMutableArray *limitDateList;
 
 - (BOOL)checkFirstTime;
+- (int)countId;
+- (void)createDataSource;
+- (void)createFirstTable;
 
 @end
 
@@ -19,6 +29,8 @@
 NSString *const AccessDatabaseName = @"test.db";
 //初回起動確認キー
 static NSString *const CheckFirstTimeKey = @"firsttime";
+
+static CGFloat const CellHeightValue = 80;
 
 
 @implementation ViewController
@@ -32,7 +44,22 @@ static NSString *const CheckFirstTimeKey = @"firsttime";
     } else {
         NSLog(@"初回起動ではないです");
     }
+    // カスタムセルの登録
+    UINib *nib = [UINib nibWithNibName:@"CustomCellTableViewCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"Cell"];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // セルの数を決定する(初期化をしてから)
+    self.cellCount = 0;
+    self.cellCount = [self countId];
+    // ここでDataSourceを作る
+    [self createDataSource];
+    // テーブルをリロード
+    [self.tableView reloadData];
+}
+
 
 //初回起動の確認
 - (BOOL)checkFirstTime {
@@ -45,6 +72,52 @@ static NSString *const CheckFirstTimeKey = @"firsttime";
         [userdefaults synchronize];
         return YES;
     }
+}
+
+- (int)countId {
+    // DB接続
+    tourokuViewController *tourokuViewCon = [tourokuViewController new];
+    FMDatabase *db = [self connectDataBase:AccessDatabaseName];
+    //count文の作成
+    NSString *countId = [[NSString alloc]initWithFormat:@"select count(*) as count from tr_todo where todo_id"];
+    // DBをオープン
+    [db open];
+    // セットしたcount文を回して、todo_idの数を数える
+    FMResultSet *countRequest = [db executeQuery:countId];
+    if([countRequest next]) {
+        tourokuViewCon.todoId = [countRequest intForColumn:@"count"];
+    }
+    // DBを閉じる
+    [db close];
+    // 数えた値を返す
+    return tourokuViewCon.todoId;
+}
+
+
+//DataSourceを作成
+- (void)createDataSource {
+    // DBの呼び出し
+    FMDatabase *db = [self connectDataBase:AccessDatabaseName];
+    //select文の作成（DB内のデータをlimitDateカラムに準ずる形で並べ替えて取り出す）
+    // どのDBからデータを取得するかを指定
+    NSString *select = [[NSString alloc] initWithFormat:@"SELECT * from tr_todo order by limit_date asc"];
+    // DBを開く
+    [db open];
+    // FMResultSetにDB先をセット
+    FMResultSet *resultSet = [db executeQuery:select];
+    //　カラムtodoTitle,limitDateの値を格納する配列を用意
+    self.titleList = [@[] mutableCopy];
+    self.limitDateList = [@[] mutableCopy];
+    
+    while([resultSet next]) {
+        // ラベルに直接取り出した値を代入していく
+        NSString *title = [resultSet stringForColumn:@"todo_title"];
+        [self.titleList addObject:title];
+        NSString *limit = [resultSet stringForColumn:@"limit_date"];
+        [self.limitDateList addObject:limit];
+    }
+    // DBを閉じる
+    [db close];
 }
 
 //データベースに接続
@@ -70,6 +143,23 @@ static NSString *const CheckFirstTimeKey = @"firsttime";
     [db close];
     
     NSLog(@"テーブルとカラムを作成しました。");
+}
+
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.cellCount;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CustomCellTableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    cell.titleLabel.text = self.titleList[indexPath.row];
+    cell.limitLabel.text = [[NSString alloc] initWithFormat:@"期限日：%@",self.limitDateList[indexPath.row]];
+    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return CellHeightValue;
 }
 
 @end

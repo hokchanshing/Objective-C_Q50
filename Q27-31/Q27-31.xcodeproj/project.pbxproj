@@ -16,6 +16,8 @@
 		7C116F9F230BBF1C005DBFFC /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C116F9E230BBF1C005DBFFC /* FMDB.framework */; };
 		7C167A14230CD0E1008771A4 /* tourokuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C167A13230CD0E1008771A4 /* tourokuViewController.m */; };
 		7C167A16230CD0F8008771A4 /* touroku.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C167A15230CD0F8008771A4 /* touroku.storyboard */; };
+		7C301FB02314B99F0014DA9B /* CustomCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C301FAE2314B99F0014DA9B /* CustomCellTableViewCell.m */; };
+		7C301FB12314B99F0014DA9B /* CustomCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C301FAF2314B99F0014DA9B /* CustomCellTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,9 @@
 		7C167A12230CD0E1008771A4 /* tourokuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tourokuViewController.h; sourceTree = "<group>"; };
 		7C167A13230CD0E1008771A4 /* tourokuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tourokuViewController.m; sourceTree = "<group>"; };
 		7C167A15230CD0F8008771A4 /* touroku.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = touroku.storyboard; sourceTree = "<group>"; };
+		7C301FAD2314B99F0014DA9B /* CustomCellTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCellTableViewCell.h; sourceTree = "<group>"; };
+		7C301FAE2314B99F0014DA9B /* CustomCellTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCellTableViewCell.m; sourceTree = "<group>"; };
+		7C301FAF2314B99F0014DA9B /* CustomCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCellTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +76,9 @@
 				7C116F88230BBEB7005DBFFC /* AppDelegate.m */,
 				7C116F8A230BBEB7005DBFFC /* ViewController.h */,
 				7C116F8B230BBEB7005DBFFC /* ViewController.m */,
+				7C301FAD2314B99F0014DA9B /* CustomCellTableViewCell.h */,
+				7C301FAE2314B99F0014DA9B /* CustomCellTableViewCell.m */,
+				7C301FAF2314B99F0014DA9B /* CustomCellTableViewCell.xib */,
 				7C167A12230CD0E1008771A4 /* tourokuViewController.h */,
 				7C167A13230CD0E1008771A4 /* tourokuViewController.m */,
 				7C167A15230CD0F8008771A4 /* touroku.storyboard */,
@@ -151,6 +159,7 @@
 			files = (
 				7C116F94230BBEB7005DBFFC /* LaunchScreen.storyboard in Resources */,
 				7C116F91230BBEB7005DBFFC /* Assets.xcassets in Resources */,
+				7C301FB12314B99F0014DA9B /* CustomCellTableViewCell.xib in Resources */,
 				7C167A16230CD0F8008771A4 /* touroku.storyboard in Resources */,
 				7C116F8F230BBEB7005DBFFC /* Main.storyboard in Resources */,
 			);
@@ -188,6 +197,7 @@
 				7C116F8C230BBEB7005DBFFC /* ViewController.m in Sources */,
 				7C116F97230BBEB7005DBFFC /* main.m in Sources */,
 				7C167A14230CD0E1008771A4 /* tourokuViewController.m in Sources */,
+				7C301FB02314B99F0014DA9B /* CustomCellTableViewCell.m in Sources */,
 				7C116F89230BBEB7005DBFFC /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
