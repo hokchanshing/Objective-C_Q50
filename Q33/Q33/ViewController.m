@@ -34,9 +34,8 @@ static NSString *const weatherApiUrl = @"http://weather.livedoor.com/forecast/we
     self.alertController = [UIAlertController alertControllerWithTitle:@"いつの天気を知りたいか？"
                                         message:@"ボタンを押してください。"
                                  preferredStyle:UIAlertControllerStyleActionSheet];
-   [self.alertController addAction:[self selectTomorrowAction]];
     [self.alertController addAction:[self selectTodayAction]];
-//    [self.alertController addAction:[self selectTomorrowAction]];
+    [self.alertController addAction:[self selectTomorrowAction]];
     [self.alertController addAction:[self selectDayAfterTomorrowAction]];
     [self.alertController addAction:[self selectCancelAction]];
 }
