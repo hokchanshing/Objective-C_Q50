@@ -103,6 +103,8 @@ static int const AddCountTodoId = 1;
 }
 
 
+
+
 - (IBAction)tourokuBtnTap:(id)sender {
     //タイトルが空のときにアラートを出す
     if (self.tourokuTitleTextField.text.length == 0) {

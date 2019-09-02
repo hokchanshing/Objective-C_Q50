@@ -22,6 +22,7 @@
 - (int)countId;
 - (void)createDataSource;
 - (void)createFirstTable;
+- (void)deleteAction;
 
 @end
 
@@ -59,7 +60,6 @@ static CGFloat const CellHeightValue = 80;
     // テーブルをリロード
     [self.tableView reloadData];
 }
-
 
 //初回起動の確認
 - (BOOL)checkFirstTime {
@@ -145,6 +145,21 @@ static CGFloat const CellHeightValue = 80;
     NSLog(@"テーブルとカラムを作成しました。");
 }
 
+//削除アクション
+- (void)deleteAction {
+    
+    ViewController *viewController = [[ViewController alloc]init];
+    FMDatabase *db = [viewController connectDataBase:AccessDatabaseName];
+    
+    // 取得した情報をデータベースに登録
+    NSString *update = [[NSString alloc] initWithFormat:@"UPDATE tr_todo SET delete_flg = 'OFF' WHERE todo_id = '%d';", ];
+    //    NSString *update = [[NSString alloc] initWithFormat:@"UPDATE tr_todo SET delete_flg = 'ON'"];
+    
+    [db open];
+    [db executeUpdate:update];
+    [db close];
+}
+
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.cellCount;
@@ -161,5 +176,20 @@ static CGFloat const CellHeightValue = 80;
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return CellHeightValue;
 }
+
+- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @[
+             [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive
+                                                title:@"Delete"
+                                              handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+                                                  // own delete action
+//                                                 [self.titleList deleteData:indexPath.row];
+                                                  [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                                              }],
+             ];
+}
+
+
 
 @end
