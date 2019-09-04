@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  Q34
+
+  Created by 陳学誠 on 2019/09/02.
+  Copyright © 2019 sample. All rights reserved.
+*/
+
+"alertTitle" = "日付を選んで下さい";
+"alertMessage" = "いつのの天気を知りたいか？";
+"aleartActionTitleToday" = "今日";
+"aleartActionTitleTomorrow" = "明日";
+"aleartActionTitleAfterTomorrow" = "明後日";
+"aleartActionTitleCancel" = "キャンセル";
