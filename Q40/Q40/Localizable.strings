@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Q40
+
+  Created by 陳学誠 on 2019/09/04.
+  Copyright © 2019 sample. All rights reserved.
+*/
+
+
+"subject"="アプリからメール送信";
+"body"="ここに本文を入力してください。";
