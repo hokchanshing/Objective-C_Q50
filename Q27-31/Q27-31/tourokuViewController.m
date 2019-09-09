@@ -100,6 +100,8 @@ static int const AddCountTodoId = 1;
     [db open];
     [db executeUpdate:insert];
     [db close];
+    
+    NSLog(@"%d番目のデータを作成しました", self.todoId);
 }
 
 

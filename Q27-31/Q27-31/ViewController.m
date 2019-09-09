@@ -17,179 +17,183 @@
 @property (nonatomic) int cellCount;
 @property (strong, nonatomic) NSMutableArray *titleList;
 @property (strong, nonatomic) NSMutableArray *limitDateList;
+@property (strong, nonatomic) NSMutableArray *todoIdList;
 
 - (BOOL)checkFirstTime;
 - (int)countId;
 - (void)createDataSource;
-- (void)createFirstTable;
-- (void)deleteAction;
+- (void)createFirstDB;
 
 @end
 
-//接続するデータベースの名前
 NSString *const AccessDatabaseName = @"test.db";
-//初回起動確認キー
-static NSString *const CheckFirstTimeKey = @"firsttime";
 
-static CGFloat const CellHeightValue = 80;
+static NSString *const CheckFirstTimeKey = @"firstRun";
 
+static NSString *const IndicateJudgeStatus = @"OFF";
+
+// セル高さ
+static CGFloat const CellHeightValue = 100;
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // 初回起動確認
     if ([self checkFirstTime]) {
-        NSLog(@"初回起動です");
-//        初回起動時、データベースにターブルを作成
-        [self createFirstTable];
-    } else {
-        NSLog(@"初回起動ではないです");
+        // データベース作成
+        NSLog(@"初回起動です。");
+        [self createFirstDB];
     }
     // カスタムセルの登録
     UINib *nib = [UINib nibWithNibName:@"CustomCellTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"Cell"];
 }
 
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    // セルの数を決定する(初期化をしてから)
     self.cellCount = 0;
     self.cellCount = [self countId];
-    // ここでDataSourceを作る
+
     [self createDataSource];
-    // テーブルをリロード
     [self.tableView reloadData];
 }
 
-//初回起動の確認
+
 - (BOOL)checkFirstTime {
-    NSUserDefaults *userdefaults = NSUserDefaults.standardUserDefaults;
     
-    if ([userdefaults objectForKey:CheckFirstTimeKey]) {
+    NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+    
+    if ([userDefaults objectForKey:CheckFirstTimeKey]) {
         return NO;
-    } else {
-        [userdefaults setBool:YES forKey:CheckFirstTimeKey];
-        [userdefaults synchronize];
-        return YES;
     }
+
+    [userDefaults setBool:YES forKey:CheckFirstTimeKey];
+    [userDefaults synchronize];
+    return YES;
 }
 
-- (int)countId {
-    // DB接続
-    tourokuViewController *tourokuViewCon = [tourokuViewController new];
-    FMDatabase *db = [self connectDataBase:AccessDatabaseName];
-    //count文の作成
-    NSString *countId = [[NSString alloc]initWithFormat:@"select count(*) as count from tr_todo where todo_id"];
-    // DBをオープン
-    [db open];
-    // セットしたcount文を回して、todo_idの数を数える
-    FMResultSet *countRequest = [db executeQuery:countId];
-    if([countRequest next]) {
-        tourokuViewCon.todoId = [countRequest intForColumn:@"count"];
-    }
-    // DBを閉じる
-    [db close];
-    // 数えた値を返す
-    return tourokuViewCon.todoId;
+// データベース接続
+- (id)connectDataBase:(NSString *)dbName {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES );
+    NSString *dir = paths[0];
+    FMDatabase *database = [FMDatabase databaseWithPath:[dir stringByAppendingPathComponent:dbName]];
+    return database;
 }
 
-
-//DataSourceを作成
+//データソースを作成
 - (void)createDataSource {
-    // DBの呼び出し
+
     FMDatabase *db = [self connectDataBase:AccessDatabaseName];
-    //select文の作成（DB内のデータをlimitDateカラムに準ずる形で並べ替えて取り出す）
-    // どのDBからデータを取得するかを指定
+
     NSString *select = [[NSString alloc] initWithFormat:@"SELECT * from tr_todo order by limit_date asc"];
     // DBを開く
     [db open];
     // FMResultSetにDB先をセット
     FMResultSet *resultSet = [db executeQuery:select];
-    //　カラムtodoTitle,limitDateの値を格納する配列を用意
+    //　取り出したデータの格納を用意
+    self.todoIdList = [@[] mutableCopy];
     self.titleList = [@[] mutableCopy];
     self.limitDateList = [@[] mutableCopy];
     
     while([resultSet next]) {
         // ラベルに直接取り出した値を代入していく
+        NSString *todoIdText = [resultSet stringForColumn:@"todo_id"];
         NSString *title = [resultSet stringForColumn:@"todo_title"];
-        [self.titleList addObject:title];
         NSString *limit = [resultSet stringForColumn:@"limit_date"];
-        [self.limitDateList addObject:limit];
+        NSString *deleteFlag = [resultSet stringForColumn:@"delete_flg"];
+        
+        if ([deleteFlag isEqualToString:IndicateJudgeStatus]) {
+            [self.todoIdList addObject:todoIdText];
+            [self.titleList addObject:title];
+            [self.limitDateList addObject:limit];
+        }
     }
-    // DBを閉じる
     [db close];
 }
 
-//データベースに接続
-- (id)connectDataBase:(NSString *)dbName {
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES );
-    NSString *dir = paths[0];
-    
-    FMDatabase *database = [FMDatabase databaseWithPath:[dir stringByAppendingPathComponent:dbName]];
-    
-    return database;
-}
-
-// テーブルとカラムを作る
-- (void)createFirstTable {
-    
+// セルの数を決定（deleteフラグがOFFの要素のみ）
+- (int)countId {
+    tourokuViewController *tourokuViewCon = [[tourokuViewController alloc]init];
     FMDatabase *db = [self connectDataBase:AccessDatabaseName];
-//    tableとカラムを生成
-    NSString *createTableColumn = @"CREATE TABLE IF NOT EXISTS tr_todo (id INTEGER PRIMARY KEY,todo_id INTEGER,todo_title TEXT,todo_contents TEXT,created INTEGER,modified INTEGER,limit_date INTEGER,delete_flg TEXT);";
+
+    NSString *countId = [[NSString alloc]initWithFormat:@"select count(*) as count from tr_todo where delete_flg='OFF'"];
     
     [db open];
-    [db executeUpdate:createTableColumn];
+    
+    FMResultSet *countRequest = [db executeQuery:countId];
+    
+    if([countRequest next]) {
+        tourokuViewCon.todoId = [countRequest intForColumn:@"count"];
+    }
+    
     [db close];
     
-    NSLog(@"テーブルとカラムを作成しました。");
+    return tourokuViewCon.todoId;
 }
 
-//削除アクション
-- (void)deleteAction {
-    
-    ViewController *viewController = [[ViewController alloc]init];
-    FMDatabase *db = [viewController connectDataBase:AccessDatabaseName];
-    
-    // 取得した情報をデータベースに登録
-    NSString *update = [[NSString alloc] initWithFormat:@"UPDATE tr_todo SET delete_flg = 'OFF' WHERE todo_id = '%d';", ];
-    //    NSString *update = [[NSString alloc] initWithFormat:@"UPDATE tr_todo SET delete_flg = 'ON'"];
-    
+- (void)createFirstDB {
+
+    FMDatabase *db = [self connectDataBase:AccessDatabaseName];
+
+    NSString *createTableCommand = @"CREATE TABLE IF NOT EXISTS tr_todo (id INTEGER PRIMARY KEY,todo_id INTEGER,todo_title TEXT,todo_contents TEXT,created INTEGER,modified INTEGER,limit_date INTEGER,delete_flg TEXT);";
+
     [db open];
-    [db executeUpdate:update];
+
+    [db executeUpdate:createTableCommand];
+
     [db close];
 }
 
-
+// セルの数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.cellCount;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CustomCellTableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
+// セルの作成
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    CustomCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+
     cell.titleLabel.text = self.titleList[indexPath.row];
-    cell.limitLabel.text = [[NSString alloc] initWithFormat:@"期限日：%@",self.limitDateList[indexPath.row]];
+    cell.limitLabel.text = [[NSString alloc] initWithFormat:@"期限日：%@", self.limitDateList[indexPath.row]];
+
     return cell;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+// 削除アクション
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+
+        FMDatabase *db = [self connectDataBase:AccessDatabaseName];
+        //削除ボタンが押された時、deleteFlagのvalueをONに
+        NSString *deleteFlagText = @"ON";
+        // 該当データのインデックス
+        NSString *deleteTodoIdIndex = self.todoIdList[indexPath.row];
+        NSString *update = [[NSString alloc]initWithFormat:@"UPDATE tr_todo set delete_flg='%@' where id=%@", deleteFlagText, deleteTodoIdIndex];
+
+        [db open];
+        [db executeUpdate:update];
+        [db close];
+        
+        NSLog(@"%@番目のデータを削除しました。", self.todoIdList[indexPath.row]);
+        
+        // 再度セル数の設定
+        self.cellCount = [self countId];
+        // 最新のデータソースを作成
+        [self createDataSource];
+        // テーブルビューを更新
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+    }
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return CellHeightValue;
 }
-
-- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return @[
-             [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive
-                                                title:@"Delete"
-                                              handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-                                                  // own delete action
-//                                                 [self.titleList deleteData:indexPath.row];
-                                                  [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                              }],
-             ];
-}
-
-
 
 @end
