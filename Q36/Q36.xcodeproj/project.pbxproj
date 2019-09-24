@@ -75,21 +75,10 @@
 		7C58C70F2339F0BC002E5E53 /* Q36 */ = {
 			isa = PBXGroup;
 			children = (
-				7C58C7102339F0BC002E5E53 /* AppDelegate.h */,
-				7C58C7112339F0BC002E5E53 /* AppDelegate.m */,
-				7C58C7132339F0BC002E5E53 /* ViewController.h */,
-				7C58C7142339F0BC002E5E53 /* ViewController.m */,
-				7C58C7162339F0BC002E5E53 /* Main.storyboard */,
-				7C58C72C2339F197002E5E53 /* WeatherData.h */,
-				7C58C72D2339F197002E5E53 /* WeatherData.m */,
-				7C58C72F2339F1D0002E5E53 /* WeatherCustomTableViewCell.h */,
-				7C58C7302339F1D0002E5E53 /* WeatherCustomTableViewCell.m */,
-				7C58C7312339F1D0002E5E53 /* WeatherCustomTableViewCell.xib */,
-				7C58C7342339F207002E5E53 /* Localizable.strings */,
-				7C58C7192339F0BD002E5E53 /* Assets.xcassets */,
-				7C58C71B2339F0BD002E5E53 /* LaunchScreen.storyboard */,
-				7C58C71E2339F0BD002E5E53 /* Info.plist */,
-				7C58C71F2339F0BD002E5E53 /* main.m */,
+				7C58C7372339F6BB002E5E53 /* Modal */,
+				7C58C7362339F69F002E5E53 /* View */,
+				7C58C7382339F6D9002E5E53 /* Controller */,
+				7C58C7392339F7E9002E5E53 /* Others */,
 			);
 			path = Q36;
 			sourceTree = "<group>";
@@ -101,6 +90,49 @@
 				7C58C7272339F0E2002E5E53 /* Realm.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7C58C7362339F69F002E5E53 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7C58C7162339F0BC002E5E53 /* Main.storyboard */,
+				7C58C7312339F1D0002E5E53 /* WeatherCustomTableViewCell.xib */,
+				7C58C71B2339F0BD002E5E53 /* LaunchScreen.storyboard */,
+				7C58C72F2339F1D0002E5E53 /* WeatherCustomTableViewCell.h */,
+				7C58C7302339F1D0002E5E53 /* WeatherCustomTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7C58C7372339F6BB002E5E53 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				7C58C72C2339F197002E5E53 /* WeatherData.h */,
+				7C58C72D2339F197002E5E53 /* WeatherData.m */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		7C58C7382339F6D9002E5E53 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7C58C7132339F0BC002E5E53 /* ViewController.h */,
+				7C58C7142339F0BC002E5E53 /* ViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7C58C7392339F7E9002E5E53 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				7C58C7102339F0BC002E5E53 /* AppDelegate.h */,
+				7C58C7112339F0BC002E5E53 /* AppDelegate.m */,
+				7C58C7342339F207002E5E53 /* Localizable.strings */,
+				7C58C7192339F0BD002E5E53 /* Assets.xcassets */,
+				7C58C71E2339F0BD002E5E53 /* Info.plist */,
+				7C58C71F2339F0BD002E5E53 /* main.m */,
+			);
+			path = Others;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
