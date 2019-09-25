@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>18393069355-n1k2vdqu3rm87n815an03g06n3e53qu5.apps.googleusercontent.com</string>
+	<string>18393069355-7j6mebic74q6poefstl1atb7dc3fhfrf.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.18393069355-n1k2vdqu3rm87n815an03g06n3e53qu5</string>
+	<string>com.googleusercontent.apps.18393069355-7j6mebic74q6poefstl1atb7dc3fhfrf</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBrQL1_WcceAkgWEINWUZLSPxwlS1wWWLk</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>jp.stv.firebasePush</string>
+	<string>jp.st-ventures.firebasePush</string>
 	<key>PROJECT_ID</key>
 	<string>stv-push-test</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:18393069355:ios:b7c0835eabc3527dc3776e</string>
+	<string>1:18393069355:ios:99cefb2ac8f429d9c3776e</string>
 	<key>DATABASE_URL</key>
 	<string>https://stv-push-test.firebaseio.com</string>
 </dict>

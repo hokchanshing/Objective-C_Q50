@@ -8,18 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		57F5A080BB11D4CC973E4905 /* libPods-Q47.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA3CEACE90F3152588014E7 /* libPods-Q47.a */; };
+		7C17A249233B467A007F0A0B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C17A248233B467A007F0A0B /* GoogleService-Info.plist */; };
 		7C59639E232236AA0095FA8D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C59639D232236AA0095FA8D /* AppDelegate.m */; };
 		7C5963A1232236AA0095FA8D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5963A0232236AA0095FA8D /* ViewController.m */; };
 		7C5963A4232236AA0095FA8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C5963A2232236AA0095FA8D /* Main.storyboard */; };
 		7C5963A6232236AB0095FA8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C5963A5232236AB0095FA8D /* Assets.xcassets */; };
 		7C5963A9232236AB0095FA8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C5963A7232236AB0095FA8D /* LaunchScreen.storyboard */; };
 		7C5963AC232236AB0095FA8D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5963AB232236AB0095FA8D /* main.m */; };
-		7C5963B3232237780095FA8D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C5963B2232237780095FA8D /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		51606435112479BD50E37AF2 /* Pods-Q47.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Q47.release.xcconfig"; path = "Pods/Target Support Files/Pods-Q47/Pods-Q47.release.xcconfig"; sourceTree = "<group>"; };
 		704E9BE44CB1F95AF7B95C0C /* Pods-Q47.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Q47.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Q47/Pods-Q47.debug.xcconfig"; sourceTree = "<group>"; };
+		7C17A248233B467A007F0A0B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7C596399232236AA0095FA8D /* Q47.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Q47.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C59639C232236AA0095FA8D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7C59639D232236AA0095FA8D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -30,7 +31,6 @@
 		7C5963A8232236AB0095FA8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C5963AA232236AB0095FA8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C5963AB232236AB0095FA8D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7C5963B2232237780095FA8D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7C5963B423223A400095FA8D /* Q47.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Q47.entitlements; sourceTree = "<group>"; };
 		8EA3CEACE90F3152588014E7 /* libPods-Q47.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Q47.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -87,7 +87,7 @@
 				7C5963A7232236AB0095FA8D /* LaunchScreen.storyboard */,
 				7C5963AA232236AB0095FA8D /* Info.plist */,
 				7C5963AB232236AB0095FA8D /* main.m */,
-				7C5963B2232237780095FA8D /* GoogleService-Info.plist */,
+				7C17A248233B467A007F0A0B /* GoogleService-Info.plist */,
 			);
 			path = Q47;
 			sourceTree = "<group>";
@@ -164,7 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C5963A9232236AB0095FA8D /* LaunchScreen.storyboard in Resources */,
-				7C5963B3232237780095FA8D /* GoogleService-Info.plist in Resources */,
+				7C17A249233B467A007F0A0B /* GoogleService-Info.plist in Resources */,
 				7C5963A6232236AB0095FA8D /* Assets.xcassets in Resources */,
 				7C5963A4232236AA0095FA8D /* Main.storyboard in Resources */,
 			);
@@ -355,7 +355,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jp.stv.firebasePush.Q47;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.st-ventures.firebasePush";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -374,7 +374,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jp.stv.firebasePush.Q47;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.st-ventures.firebasePush";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
