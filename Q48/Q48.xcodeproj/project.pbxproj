@@ -42,6 +42,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7C23FD432341C6A300DC76DA /* PushExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PushExtension.entitlements; sourceTree = "<group>"; };
 		B59276F12340651600B1CC67 /* Q48.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Q48.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59276F42340651600B1CC67 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B59276F52340651600B1CC67 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -115,6 +116,7 @@
 		B592771323406A1400B1CC67 /* PushExtension */ = {
 			isa = PBXGroup;
 			children = (
+				7C23FD432341C6A300DC76DA /* PushExtension.entitlements */,
 				B592771423406A1400B1CC67 /* NotificationService.h */,
 				B592771523406A1400B1CC67 /* NotificationService.m */,
 				B592771723406A1400B1CC67 /* Info.plist */,
@@ -175,6 +177,11 @@
 					};
 					B592771123406A1400B1CC67 = {
 						CreatedOnToolsVersion = 11.0;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -381,7 +388,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Q48/Q48.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = PCCZJUYRT6;
 				INFOPLIST_FILE = Q48/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -390,6 +398,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.stv.push.Q48;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = ChinPushTest;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -399,7 +408,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Q48/Q48.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = PCCZJUYRT6;
 				INFOPLIST_FILE = Q48/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -408,6 +418,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.stv.push.Q48;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = ChinPushTest;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -415,10 +426,11 @@
 		B592771C23406A1400B1CC67 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PCCZJUYRT6;
 				INFOPLIST_FILE = PushExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -426,6 +438,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.stv.push.Q48.PushExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -434,10 +447,11 @@
 		B592771D23406A1400B1CC67 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PCCZJUYRT6;
 				INFOPLIST_FILE = PushExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -445,6 +459,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.stv.push.Q48.PushExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

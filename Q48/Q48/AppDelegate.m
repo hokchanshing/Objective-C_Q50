@@ -20,7 +20,9 @@
     [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:
      (UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert ) completionHandler:^(BOOL granted, NSError *_Nullable error) {
          if (granted) {
-             [UIApplication.sharedApplication registerForRemoteNotifications];
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [UIApplication.sharedApplication registerForRemoteNotifications];
+             });
          }
      }];
 
@@ -36,6 +38,7 @@
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
 
     NSMutableString *token = [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"%@", deviceToken]];
+    //トークンの文字列を整理
     [token setString:[token stringByReplacingOccurrencesOfString:@"<" withString:@""]];
     [token setString:[token stringByReplacingOccurrencesOfString:@">" withString:@""]];
     [token setString:[token stringByReplacingOccurrencesOfString:@" " withString:@""]];
@@ -44,9 +47,18 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
     NSLog(@"deviceToken = %@", token);
 }
 
+//in-app notification
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+    
+    completionHandler(UNNotificationPresentationOptionAlert);
+    
+    NSLog(@"Recevied foreground notification.");
+}
+
 -(void)sendToken:(NSString *)token {
     
-    NSString *serverPHP = @"http://192.168.1.4:8888/training/training/push/index.php";
+    //localhostではスマホが認識できないので、IPアドレスにしないと接続できない。
+    NSString *serverPHP = @"http://192.168.11.53:8888/training/training/push/index.php";
     NSString *postString = [NSString stringWithFormat:@"DeviceToken=%@", token];
     NSMutableURLRequest *reqest = [[NSMutableURLRequest alloc]init];
     
